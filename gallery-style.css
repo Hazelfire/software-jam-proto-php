@@ -1,0 +1,35 @@
+#main-wrapper {
+  height: 0px;
+}
+
+.member-table, #gallery {
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  width: 100%;
+  margin: auto;
+
+}
+
+.member-entry {
+  text-align: center;
+  margin: auto;
+}
+
+.member-name, .member-form {
+  margin: none;
+  padding: none;
+}
+
+.member-image {
+  padding: 5px;
+}
+
+#slideshow {
+  margin: auto;
+  display: block;
+  width: 500px;
+  height: 200px;
+
+  border: none;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+		<style>
+
+			form#suggestions {
+				display: block;
+				width: 600px;
+				margin: auto;
+			}
+
+			#suggestions > h1 {
+				display: block;
+				margin: auto;
+				text-align: center;
+			}
+
+			.input-label {
+				display: inline-block;
+				width: 100%;
+			}
+
+			.input-i {
+				width: 100%;
+				resize: none;
+			}
+
+			textarea.input-i {
+				height: 200px;
+			}
+
+			.req {
+				color: #505050;
+				font-size: 15px;
+				vertical-align: top;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div id='title-bar'>
+				<div class='image'><img src="images/bhs_Logo.png" class="bhslogo" /></div>
+				<div class='image'><img src="images/logo.png" class="logo" /></div>
+				<div class='title'><span>BHS Student Representative Council</span></div>
+			</div>
+			<div id="nav-bar">
+				<div class='nav-item' onclick='location="index.php"'><span class="pageLink">Home</span></div>
+				<div class='nav-item' onclick='location="index.php#about"'><span class="pageLink">About</span></div>
+				<div class='nav-item' onclick='location="gallery.html"'><span class="pageLink">Gallery</span></div>
+				<div class='nav-item' onclick='location="events.php"'><span class="pageLink">Events</span></div>
+				<div class='nav-item' onclick='location="suggestions.html"'><span class="pageLink">Suggestions</span></div>
+				<div class='nav-item' onclick='location="contactus.html"'><span class="pageLink">Contact Us</span></div>
+			</div>
+
+		</header>
+	<div id="content">
+		<form action="./submitsuggestion.php" method="post" id='suggestions'>
+			<h1 class='ideas-title'> SRC Ideas Submission </h1>
+			<p class="suggestionp">Please submit all of your suggestions to the SRC, we will review all submissions in our next meeting. Please note all inappropriate suggestions will be deleted.</p>
+
+			<span class='input-label'><h2>Name<span class='req'>*</span></h2></span><br />
+			<input class='input-i' placeholder="Student Name" type="text" name="name" required/><br /><br />
+
+			<span class='input-label'><h2>Year Level</h2></span><br />
+			<input class='input-i' placeholder="7" type="number" name="yearlvl" min='7' max='12'/><br /><br />
+
+			<span class='input-label'><h2>School Email<span class='req'>*</span></h2></span><br />
+			<input class='input-i' placeholder="example@example.com" type="email" value="" name="email" required/><br /><br />
+
+			<span class='input-label'><h2>Idea<span class='req'>*</span></h2></span><br />
+			<textarea class='input-i' placeholder="Enter suggestion here" name="suggestion" required></textarea><br /><br />
+
+			<span class='input-label'>Yes, I want a response<span>
+			<input type="checkbox" name="response" /><br /><br />
+
+			<input type="submit" /><br />
+			<p><span class='req'>*</span> - Fields that must be filled in</p>
+		</form>
+	</div>
+
+	</body>
+</html>
