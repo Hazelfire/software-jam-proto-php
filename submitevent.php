@@ -1,22 +1,24 @@
 <html>
+
 <body>
-	<?php
+<?php
 	
 		$servername = "localhost";
-     		$username = "src";
-     		$password = "SRCBelmont2017";
-        	$database = "src";
+        $username = "src";
+        $password = "SRCBelmont2017";
+        $database = "src";
+        
+        $conn = new mysqli($servername, $username, $password, $database);
 
-		$title = mysql_escape_mimic($_POST["title"]);
+		$title = mysqli_real_escape_string($conn, $_POST["title"]);
 		$uploadDate = date("Y-m-d");
 		$date = $_POST["date"];
-		$description = mysql_escape_mimic($_POST["description"]);
+		$description = mysqli_real_escape_string($conn,$_POST["description"]);
 
-      		$conn = new mysqli($servername, $username, $password, $database);
 		$query = "INSERT INTO Events (Title, UploadDate, Date, Description) VALUES ('$title', '$uploadDate', '$date', '$description')";
 
 		if ($conn->query($query) === TRUE) {
-    			echo "New record created successfully";
+            echo "New record created successfully";
 		} else {
    			echo "Error: " . $sql . "<br>" . $conn->error;
 		}
