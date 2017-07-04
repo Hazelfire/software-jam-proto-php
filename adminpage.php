@@ -1,33 +1,13 @@
 <!DOCTYPE html>
+<?php
+$ADMINPASSWORD = "password";
+?>
 <html>
 	<head>
 		<title> SRC Admin Page - Event </title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<style>
-        		#content {
-	   			 position:absolute;
-	   			 margin-left:12%;
-	   			 width:76%;
-	   			 background-color:white;
-	    			 color:black;
-	    			 box-shadow: 0px 0px 6px 6px #9e9e9e;
-	   			 font-family: 'Lato', sans-serif;
-	   			 z-index:-1;
-	   			 padding: 20px;   
-	}
-	
-	.eventtitle {
-	    margin-bottom: 10px;
-	}
-
-	#upcoming {
-	    margin-bottom: 20px;
-	}
-
-	.eventelement {
-	    margin-left: 30px;
-	}
-    		</style>
+    	</style>
 	</head>
 <body>
 	<header>
@@ -37,10 +17,14 @@
 				<div class='title'><span>BHS SRC Admin Page</span></div>
 			</div>
 	</header>
-	<div id="upload">
-			<h1 style="text-align:center;"> UPLOAD EVENT </h1>
+<?php
+
+if($_POST["password"] === $ADMINPASSWORD){
+?>
+	<div class="contentbox" style="text-align:center;">
+			<h1 > UPLOAD EVENT </h1>
 			<br><br><br>
-			<h2 style="text-align:center;"> EVENT </h2>
+			<h2> EVENT </h2>
 
 			<form action="submitevent.php" method = "post">
 			<b>Title<br><b>
@@ -54,5 +38,13 @@
 			<br><br>
 			<input type="submit" value="upload" style="font-size: 48px">
 			</form>
+    </div>
+<?php }else{ ?>
+<div class="contentbox" style="text-align:center;">
+    <p>You are not permitted to access this webpage</p>
+</div>
+<?php
+
+}?>
 </body>
 </html>

@@ -32,19 +32,7 @@
 				text-align: left;
 			}
 			
-			.contentbox {
-				padding: 10px;
-				position:relative;
-				top:130px;
-				margin-left:12%;
-				width:76%;
-				background-color:white;
-				color:black;
-				box-shadow: 0px 0px 10px 6px #9e9e9e;
-				z-index:-1;
-				margin-bottom:15px;
-			}
-		</style>
+					</style>
 		
 	</head>
 	
