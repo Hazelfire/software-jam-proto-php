@@ -18,6 +18,15 @@ $ADMINPASSWORD = "password";
            $.post("submitevent.php", {"title": title, "date": date, "description": description});
 
         }
+        function removeEvent(){
+            let eventRow = event.target.closest("tr");
+            console.log(eventRow);
+            let title = $(eventRow).children().first().text();
+            console.log(title);
+            $.post("deleteevent.php", {"title": title});
+            
+            $(eventRow).remove();
+        }
         </script>
 	</head>
 <body>
@@ -48,8 +57,12 @@ if($_POST["password"] === $ADMINPASSWORD){
 ?>
             <table id="events" style="text-align:left">
             <?php
+
             while($row = $result->fetch_assoc()){
-                echo "<tr><td>".$row["Title"]."</td><td>" . $row["Date"]."</td><td>".$row["Description"]."</td></tr>";
+                echo "<tr><td>".$row["Title"]."</td><td>" . $row["Date"]."</td><td>".$row["Description"]."</td>";
+
+                // Remove event button
+                echo "<td><input type='button' onclick='removeEvent()' value='remove'></input></td></tr>";
             }
             ?>
             <tr>
