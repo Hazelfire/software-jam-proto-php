@@ -6,8 +6,19 @@ $ADMINPASSWORD = "password";
 	<head>
 		<title> SRC Admin Page - Event </title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<style>
-    	</style>
+        <script type="text/javascript" src="jquery-3.2.1.min.js" ></script>
+		<script>
+        function addEvent(){
+           let title = $("#neweventtitle").val();
+           let date = $("#neweventdate").val();
+           let description = $("#neweventdescription").val();
+
+           $("<tr><td>" + title + "</td><td>" + date + "</td><td>" + description + "</td></tr>").insertBefore("#events tr:last");
+
+           $.post("submitevent.php", {"title": title, "date": date, "description": description});
+
+        }
+        </script>
 	</head>
 <body>
 	<header>
@@ -22,23 +33,40 @@ $ADMINPASSWORD = "password";
 if($_POST["password"] === $ADMINPASSWORD){
 ?>
 	<div class="contentbox" style="text-align:center;">
-			<h1 > UPLOAD EVENT </h1>
 			<br><br><br>
-			<h2> EVENT </h2>
+			<h2> Events </h2>
+<?php
+            $host = "localhost";
+            $username = "src";
+            $password = "SRCBelmont2017";
+            $database = "src";
 
-			<form action="submitevent.php" method = "post">
-			<b>Title<br><b>
-			<input type="text" name="title">
-			<br><br>
-			<b>Date<br><b>
-			<input type="date" name="date">
-			<br><br>
-			<b>Description<br><b>
-			<input style="height: 200px; width: 500px;" type="text" name = "description">
-			<br><br>
-			<input type="submit" value="upload" style="font-size: 48px">
-			</form>
-    </div>
+            $conn = new mysqli($host, $username, $password, $database);
+
+            $query = "SELECT * FROM Events ORDER BY Date ASC";
+            $result = $conn->query($query);
+?>
+            <table id="events" style="text-align:left">
+            <?php
+            while($row = $result->fetch_assoc()){
+                echo "<tr><td>".$row["Title"]."</td><td>" . $row["Date"]."</td><td>".$row["Description"]."</td></tr>";
+            }
+            ?>
+            <tr>
+                <td>
+                    <input id="neweventtitle" type="text" name="neweventtitle" />
+                </td>
+                <td>
+                    <input id="neweventdate" type="date" name="neweventdate" />
+                </td>
+                <td>
+                    <textarea id="neweventdescription" name="neweventdescription" > </textarea>
+                </td>
+                <td>
+                    <input type="button" value="add" onclick="addEvent()" />
+                </td>
+            </tr>
+            </table>
 <?php }else{ ?>
 <div class="contentbox" style="text-align:center;">
     <p>You are not permitted to access this webpage</p>
